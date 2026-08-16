@@ -143,7 +143,16 @@
   </div>
 
 </div>
+<div class="tool">
+  <h2>📊 Yüzde Hesaplama</h2>
 
+  <input id="percentNumber" type="number" placeholder="Sayı">
+  <input id="percentValue" type="number" placeholder="Yüzde (%)">
+
+  <button onclick="calculatePercent()">Hesapla</button>
+
+  <div class="result" id="percentResult"></div>
+</div>
 <footer>
   © 2026 Ahmet Talha Yıldız — Pratik Araçlar
 </footer>
@@ -186,7 +195,15 @@ function convertKg() {
   document.getElementById("kgResult").innerText =
     "Sonuç: " + (kg * 1000) + " gram";
 }
+function calculatePercent() {
+  const number = Number(document.getElementById("percentNumber").value);
+  const percent = Number(document.getElementById("percentValue").value);
 
+  const result = number * percent / 100;
+
+  document.getElementById("percentResult").innerText =
+    "Sonuç: " + result;
+}
 </script>
 
 </body>
