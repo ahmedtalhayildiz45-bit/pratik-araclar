@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pratik Araçlar</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 15px;
+      background: #111827;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      color: #cbd5e1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .tool {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .tool h2 {
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .result {
+      margin-top: 12px;
+      padding: 10px;
+      background: #0f172a;
+      border-radius: 8px;
+      min-height: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛠️ Pratik Araçlar</h1>
+  <p>Günlük işler için ücretsiz ve kullanışlı araçlar</p>
+</header>
+
+<div class="container">
+
+  <div class="tools">
+
+    <div class="tool">
+      <h2>🧮 Hesap Makinesi</h2>
+
+      <input id="num1" type="number" placeholder="1. sayı">
+      <input id="num2" type="number" placeholder="2. sayı">
+
+      <button onclick="calculate('+')">Topla</button>
+      <button onclick="calculate('-')">Çıkar</button>
+      <button onclick="calculate('*')">Çarp</button>
+      <button onclick="calculate('/')">Böl</button>
+
+      <div class="result" id="calcResult"></div>
+    </div>
+
+    <div class="tool">
+      <h2>📏 Metre → Santimetre</h2>
+
+      <input id="meter" type="number" placeholder="Metre">
+
+      <button onclick="convertMeter()">Dönüştür</button>
+
+      <div class="result" id="meterResult"></div>
+    </div>
+
+    <div class="tool">
+      <h2>⚖️ Kilogram → Gram</h2>
+
+      <input id="kg" type="number" placeholder="Kilogram">
+
+      <button onclick="convertKg()">Dönüştür</button>
+
+      <div class="result" id="kgResult"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Pratik Araçlar
+</footer>
+
+<script>
+
+function calculate(operation) {
+  const a = Number(document.getElementById("num1").value);
+  const b = Number(document.getElementById("num2").value);
+
+  let result;
+
+  if (operation === "+") {
+    result = a + b;
+  }
+
+  if (operation === "-") {
+    result = a - b;
+  }
+
+  if (operation === "*") {
+    result = a * b;
+  }
+
+  if (operation === "/") {
+    result = b === 0 ? "0'a bölünemez!" : a / b;
+  }
+
+  document.getElementById("calcResult").innerText = "Sonuç: " + result;
+}
+
+function convertMeter() {
+  const meter = Number(document.getElementById("meter").value);
+  document.getElementById("meterResult").innerText =
+    "Sonuç: " + (meter * 100) + " cm";
+}
+
+function convertKg() {
+  const kg = Number(document.getElementById("kg").value);
+  document.getElementById("kgResult").innerText =
+    "Sonuç: " + (kg * 1000) + " gram";
+}
+
+</script>
+
+</body>
+</html>
