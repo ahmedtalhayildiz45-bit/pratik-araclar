@@ -153,6 +153,16 @@
 
   <div class="result" id="percentResult"></div>
 </div>
+  <div class="tool">
+  <h2>💰 İndirim Hesaplama</h2>
+
+  <input id="price" type="number" placeholder="Ürün fiyatı (TL)">
+  <input id="discount" type="number" placeholder="İndirim (%)">
+
+  <button onclick="calculateDiscount()">Hesapla</button>
+
+  <div class="result" id="discountResult"></div>
+  </div>
 <footer>
   © 2026 Ahmet Talha Yıldız — Pratik Araçlar
 </footer>
@@ -204,6 +214,16 @@ function calculatePercent() {
   document.getElementById("percentResult").innerText =
     "Sonuç: " + result;
 }
+function calculateDiscount() {
+  const price = Number(document.getElementById("price").value);
+  const discount = Number(document.getElementById("discount").value);
+
+  const discountAmount = price * discount / 100;
+  const finalPrice = price - discountAmount;
+
+  document.getElementById("discountResult").innerText =
+    "İndirim: " + discountAmount + " TL | Yeni fiyat: " + finalPrice + " TL";
+}  
 </script>
 
 </body>
