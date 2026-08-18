@@ -93,6 +93,28 @@
       padding: 30px;
       color: #94a3b8;
     }
+    .site-search {
+  margin-bottom: 25px;
+}
+
+.site-search input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid #334155;
+  background: #1e293b;
+  color: white;
+  font-size: 17px;
+  outline: none;
+}
+
+.site-search input::placeholder {
+  color: #94a3b8;
+}
+
+.site-search input:focus {
+  border-color: #2563eb;
+}
   </style>
 </head>
 
@@ -104,7 +126,14 @@
 </header>
 
 <div class="container">
-
+<div class="site-search">
+  <input
+    type="text"
+    id="toolSearch"
+    placeholder="🔎 Araç ara... (örnek: hesap, yüzde, kilogram)"
+    oninput="searchTools()"
+  >
+</div>
   <div class="tools">
 
     <div class="tool">
@@ -174,7 +203,20 @@
 </footer>
 
 <script>
+function searchTools() {
+  const search = document.getElementById("toolSearch").value.toLowerCase().trim();
+  const tools = document.querySelectorAll(".tool");
 
+  tools.forEach(tool => {
+    const text = tool.innerText.toLowerCase();
+
+    if (text.includes(search)) {
+      tool.style.display = "";
+    } else {
+      tool.style.display = "none";
+    }
+  });
+}
 function calculate(operation) {
   const a = Number(document.getElementById("num1").value);
   const b = Number(document.getElementById("num2").value);
